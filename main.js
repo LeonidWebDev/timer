@@ -1,14 +1,22 @@
 class MyTimer {
-    constructor(hours, minutes, seeconds) {
-        this.hours = document.querySelector(".hours")
-            // this.init()
+    constructor() {
+        this.startBtn = document.querySelector(".start")
+        this.secondsDisplay = document.querySelector(".seconds")
+        this.init()
     }
     init() {
-        this.hours.innerHTML = "11122"
+        this.startBtn.addEventListener("click", () => {
+            this.startTimer()
+        })
     }
 
     startTimer() {
+        let seconds = 0
 
+        window.setInterval(() => {
+            this.secondsDisplay.innerHTML = seconds
+            seconds++
+        }, 1000)
     }
 
     stopTimer() {
