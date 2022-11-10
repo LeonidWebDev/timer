@@ -2,6 +2,7 @@ class MyTimer {
     constructor() {
         this.startBtn = document.querySelector(".start")
         this.secondsDisplay = document.querySelector(".seconds")
+        this.minutesDisplay = document.querySelector(".minutes")
         this.restartBtn = document.querySelector(".restart")
         this.init()
     }
@@ -16,17 +17,25 @@ class MyTimer {
 
     startTimer() {
         let seconds = 0
+        let minutes = 0
 
         this.intervalID = window.setInterval(() => {
-            this.secondsDisplay.innerHTML = seconds
             seconds++
+            if (seconds == "60") {
+                seconds = "00"
+                minutes++
+                this.minutesDisplay.innerHTML = minutes + " : "
+            }
+            this.secondsDisplay.innerHTML = seconds
+
         }, 1000)
 
     }
 
     stopTimer() {
         window.clearInterval(this.intervalID)
-        this.secondsDisplay.innerHTML = 0
+        this.secondsDisplay.innerHTML = "0"
+        this.minutesDisplay.innerHTML = "0 : "
     }
 
     testartTimer() {
